@@ -1,12 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const DiePath = '/home/funtimes909/Documents/Die';
+const DiePath = 'images/Die';
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('roll')
-		.setDescription('Rolls a dice and returns an image corrosponding to the value'),
+		.setDescription('Rolls a die!'),
 	async execute(interaction) {
 		const files = fs.readdirSync(DiePath);
 		const randomIndex = Math.floor(Math.random() * files.length);
