@@ -16,10 +16,11 @@ module.exports = {
 		const randomIndex = Math.floor(Math.random() * files.length);
 		const randomFile = files[randomIndex];
 		const filePath = path.join(memeFolderPath, randomFile);
+		console.log(randomFile)
         try {
 		await interaction.reply({ files: [filePath] });
         } catch {
             console.log('There was an error running the Meme command!')
         }
-        },
-    }
+    },
+}
