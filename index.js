@@ -10,9 +10,9 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 function ChangeStatus() {
 	const status = {
-		Watching: ["Helluva Boss", "Hazbin Hotel", "Breaking Bad", "Better Call Saul", "Stranger Things", "The world burn", ""],
-		Playing: ["Minecraft", "Project Zomboid", "ULTRAKILL", "Windows 95", "Windows XP", "Among Us", "OMORI", "Wikipedia", "Visual Studio Code", "Linux", "Firefox", "Hello Kitty Island Adventure"],
-		Listening: ["Arcade Fire", "Daft Punk", "Waterflame", "Queen", "Keygen Church", "Tally Hall", "Heaven Pierce Her", "100 Gecs"]}
+		Watching: ["Helluva Boss", "Hazbin Hotel", "Breaking Bad", "Better Call Saul", "Stranger Things", "The world burn", "The Walking Dead", "Brodie Robertson", "Doctor Who", "Skibidi Toilet", "Coraline", "Red Hat Enterprise Linux", "YOU", "Matt Patts Final Theory"],
+		Playing: ["Minecraft", "Project Zomboid", "ULTRAKILL", "Windows 95", "Windows XP", "Among Us", "OMORI", "Wikipedia", "Visual Studio Code", "Linux", "Firefox", "Hello Kitty Island Adventure", "Vencord", "RDR2", "Lethal Company", "/home/funtimes909/", "Gacha Life", "Muse Dash","DDLC", "Genshin Impact", "rm -rf /", "Project Sekai", "Valheim", "Celeste", "UNDERTALE", "Subnautica"],
+		Listening: ["Arcade Fire", "Daft Punk", "Waterflame", "Queen", "Keygen Church", "Tally Hall", "Heaven Pierce Her", "100 Gecs", "Doctor Who Theme", "Skibidi Toilet Phonk", "Odetari", "TV Girl", "Crazy Little Thing Called Love", "Lethal Company Delivery Music", "Nimbasa Core", "MrKitty"]}
 		const keys = Object.keys(status)
 		const type = keys[(Math.trunc(Math.random() * keys.length))]
 		const items = status[type]
