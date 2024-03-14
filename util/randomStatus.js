@@ -1,6 +1,6 @@
 const { ActivityType } = require('discord.js');
 
-module.exports.statuses = {
+const statuses = {
     Watching: [
         "Helluva Boss",
         "Hazbin Hotel",
@@ -65,6 +65,8 @@ module.exports.statuses = {
     ]
 }
 
+module.exports.statuses = statuses;
+
 const statusTypeMap = {
     Playing: ActivityType.Playing,
     Streaming: ActivityType.Streaming,
@@ -73,6 +75,8 @@ const statusTypeMap = {
     Custom: ActivityType.Custom,
     Competing: ActivityType.Competing
 }
+
+module.exports.statusTypeMap = statusTypeMap;
 
 module.exports.ChangeStatus = function ChangeStatus(client) {
     if (!client.isReady()) return;
