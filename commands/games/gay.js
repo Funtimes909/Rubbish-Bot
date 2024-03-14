@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const commandName = "/gay"
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -28,5 +29,8 @@ module.exports = {
         else {
             await interaction.reply({content: user + " is " + gay + "% Gay!"})
         }
+        const userId = interaction.user.tag 
+		const guildName = interaction.guild.name
+		console.log("[COMMAND_EXECUTED] " + userId + " ran " + commandName + " in " + guildName + `[VALUE] ${gay}`)
     }
 }

@@ -3,6 +3,7 @@ const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require(
 const { token } = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
+const { Activity } = require('discord.js');
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 const eventsPath = path.join(__dirname, 'events');
@@ -15,7 +16,25 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
-	client.user.setActivity('Helluva Boss', { type: ActivityType.Watching });
+	const watching = ["Helluva Boss", "Hazbin Hotel", "Breaking Bad", "Better Call Saul", "Stranger Things"]
+	const playing = ["Minecraft", "Project Zomboid", "ULTRAKILL", "Windows 95", "Windows XP", "Among Us", "OMORI"]
+	const listening = ["Arcade Fire", "Daft Punk", "Waterflame", "Queen", "Keygen Church"]
+	const currentStatus = (Math.trunc(Math.random() * 3))
+	console.log(currentStatus)
+	if (currentStatus == 1) {
+		const Activity = "Watching"
+	}
+	else if (currentStatus == 2) {
+		const Activity = "Playing"
+	}
+	else if (currentStatus == 3) {
+		const Activity = "Listening"
+	}
+	else {
+		const Activity = "Playing"
+	}
+	client.user.setActivity('Helluva Boss', { type: ActivityType.Activity });
+	client.user.setStatus('dnd');
 });
 
 // Log in to Discord with your client's token

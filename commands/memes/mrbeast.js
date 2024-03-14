@@ -2,6 +2,7 @@ const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 const MrbeastFolderPath = '/home/funtimes909/Documents/Memes/Mr Beastified YouTube';
+const commandName = "/mrbeast"
 
 function RandomFile() { // Function to generate a random mr beast reacts meme from the mrbeast memes folder, call before replying to always generate a fresh one
     randomFile = (Math.floor(Math.random() * files.length))
@@ -19,7 +20,10 @@ module.exports = {
         try {
 		await interaction.reply({ files: [filePath] });
         } catch {
-            console.log('rah')
+            console.log(`[COMMAND_ERROR] There was an error running the ${commandName} command!`)
         }
+		const userId = interaction.user.tag 
+		const guildName = interaction.guild.name
+		console.log("[COMMAND_EXECUTED] " + userId + " ran " + commandName + " in " + guildName + `[VALUE] ${filePath}`)
         },
     }

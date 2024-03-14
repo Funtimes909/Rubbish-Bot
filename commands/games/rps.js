@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const data = new SlashCommandBuilder
 const ComputerChoices = ['Rock', 'Paper', 'Scissors']
+const commandName = "/rps"
 
 function Logic(player, computer) {
 }
@@ -50,5 +51,8 @@ module.exports = {
 				await interaction.reply({
 			content: 'I choose ' + (computer) + ', you choose ' + (player) + ', ' + (result),
 		})
+		const userId = interaction.user.tag 
+		const guildName = interaction.guild.name
+		console.log("[COMMAND_EXECUTED] " + userId + " ran " + commandName + " in " + guildName + `[VALUE] ${computer} ${player} ${result}`)
 	}
 }
