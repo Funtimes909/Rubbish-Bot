@@ -6,36 +6,17 @@ const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds],  });
+const { ChangeStatus } = require("./util/randomStatus")
 
-function ChangeStatus() {
-	const status = {
-		Watching: ["Helluva Boss", "Hazbin Hotel", "Breaking Bad", "Better Call Saul", "Stranger Things", "The world burn", "The Walking Dead", "Brodie Robertson", "Doctor Who", "Skibidi Toilet", "Coraline", "Red Hat Enterprise Linux", "YOU", "Matt Patts Final Theory"],
-		Playing: ["Minecraft", "Project Zomboid", "ULTRAKILL", "Windows 95", "Windows XP", "Among Us", "OMORI", "Wikipedia", "Visual Studio Code", "Linux", "Firefox", "Hello Kitty Island Adventure", "Vencord", "RDR2", "Lethal Company", "/home/funtimes909/", "Gacha Life", "Muse Dash","DDLC", "Genshin Impact", "rm -rf /", "Project Sekai", "Valheim", "Celeste", "UNDERTALE", "Subnautica"],
-		Listening: ["Arcade Fire", "Daft Punk", "Waterflame", "Queen", "Keygen Church", "Tally Hall", "Heaven Pierce Her", "100 Gecs", "Doctor Who Theme", "Skibidi Toilet Phonk", "Odetari", "TV Girl", "Crazy Little Thing Called Love", "Lethal Company Delivery Music", "Nimbasa Core", "MrKitty"]}
-		const keys = Object.keys(status)
-		const type = keys[(Math.trunc(Math.random() * keys.length))]
-		const items = status[type]
-		const currentStatus = items[(Math.trunc(Math.random() * items.length))]
-	if (type == "Listening") {
-		client.user.setActivity(currentStatus, { type: ActivityType.Listening });
-	}
-	else if (type == "Playing") {
-		client.user.setActivity(currentStatus, { type: ActivityType.Playing });
-	}
-	else {
-		client.user.setActivity(currentStatus, { type: ActivityType.Watching });
-	}
-	console.log(`[BOT_STATUS] Bot status has been set to [${type}] [${currentStatus}]`)
-	setInterval(ChangeStatus, 300000)
-}
+setInterval(ChangeStatus, 300000, client);
 
-// When the client is ready, run this code (only once).
+// When the client is ready, run this code.
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
-client.once(Events.ClientReady, readyClient => {
-	ChangeStatus()
+client.on(Events.ClientReady, readyClient => {
 	client.user.setStatus('dnd');
+	ChangeStatus(readyClient);
 });
 
 // Log in to Discord with your client's token
