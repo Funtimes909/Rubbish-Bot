@@ -1,6 +1,6 @@
 const { ActivityType } = require('discord.js');
 
-const statuses = {
+const activities = {
     Watching: [
         "Helluva Boss",
         "Hazbin Hotel",
@@ -15,7 +15,20 @@ const statuses = {
         "Coraline",
         "Red Hat Enterprise Linux",
         "YOU",
-        "Matt Patts Final Theory"
+        "Matt Patts Final Theory",
+        "Mr Breast",
+        "the Brain Rot Machine",
+        "Gentoo compile",
+        "Linux compile",
+        "Chromium compile",
+        "Dream",
+        "Cringe Minecraft YouTubers",
+        "Java Tutorial 12 Hours",
+        "Sorting Algorithms",
+        "Vencord #support channel",
+        "Richard Stallman",
+        "Techbros",
+        "Hello Street Cat"
     ],
     Playing: [
         "Minecraft",
@@ -43,7 +56,25 @@ const statuses = {
         "Valheim",
         "Celeste",
         "UNDERTALE",
-        "Subnautica"
+        "Subnautica",
+        "Splatoon 3",
+        "yuzu",
+        "Citra",
+        "Ryujinx",
+        "KDE Plasma",
+        "sudo chmod 000 /",
+        "sudo chown root /home",
+        "Firtnite",
+        "Tomodachi Life",
+        "Super Mario 64",
+        "Gran Turismo 4",
+        "Animal Crossing",
+        "sudo pacman -Syu",
+        "with POWER!",
+        "Dolphin",
+        "SuperTuxKart",
+        "Xorg",
+        "systemd"
     ],
     Listening: [
         "Arcade Fire",
@@ -61,13 +92,20 @@ const statuses = {
         "Crazy Little Thing Called Love",
         "Lethal Company Delivery Music",
         "Nimbasa Core",
-        "MrKitty"
+        "MrKitty",
+        "dQw4w9WgXcQ",
+        "screams from the basement",
+        "screams from the closet",
+        "screams from the walls",
+        "catgirls meowing",
+        "Sorting Algorithms",
+        "Trap Nation"
     ]
 }
 
-module.exports.statuses = statuses;
+module.exports.statuses = activities;
 
-const statusTypeMap = {
+const activityTypeMap = {
     Playing: ActivityType.Playing,
     Streaming: ActivityType.Streaming,
     Listening: ActivityType.Listening,
@@ -76,14 +114,20 @@ const statusTypeMap = {
     Competing: ActivityType.Competing
 }
 
-module.exports.statusTypeMap = statusTypeMap;
+module.exports.activityTypeMap = activityTypeMap;
+
+const statuses = ['online', 'idle', 'dnd'];
+
+module.exports.statuses = statuses;
 
 module.exports.ChangeStatus = function ChangeStatus(client) {
     if (!client.isReady()) return;
-    const keys = Object.keys(statuses)
-    const type = keys[(Math.trunc(Math.random() * keys.length))]
-    const items = statuses[type]
-    const currentStatus = items[(Math.trunc(Math.random() * items.length))]
-    client.user.setActivity(currentStatus, { type: statusTypeMap[type] });
+    const keys = Object.keys(activities)
+    const type = keys[(Math.floor(Math.random() * keys.length))]
+    const items = activities[type]
+    const currentStatus = items[(Math.floor(Math.random() * items.length))]
+    client.user.setActivity(currentStatus, { type: activityTypeMap[type] });
     console.log(`[BOT_STATUS] Bot status has been set to [${type}] [${currentStatus}]`)
+	client.user.setStatus(statuses[(Math.floor(Math.random() * statuses.length))]);
+    
 }

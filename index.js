@@ -15,7 +15,6 @@ setInterval(ChangeStatus, 300000, client);
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.on(Events.ClientReady, readyClient => {
-	client.user.setStatus('dnd');
 	ChangeStatus(readyClient);
 });
 
