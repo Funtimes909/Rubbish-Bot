@@ -13,7 +13,8 @@ module.exports = {
 		}
 
 		try {
-			await command.execute(interaction);
+			let output = await command.execute(interaction);
+			// logging(interaction, interaction.commandName, output);
 		} catch (error) {
 			console.error(error);
 			if (interaction.replied || interaction.deferred) {

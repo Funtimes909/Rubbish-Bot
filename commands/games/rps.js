@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const data = new SlashCommandBuilder
+const logging = require('../../events/logging.js')
 const ComputerChoices = ['Rock', 'Paper', 'Scissors']
 const commandName = "/rps"
 
@@ -45,15 +46,7 @@ module.exports = {
 						result = "You Win!"
 					}	
 				}
-				await interaction.reply({content: 'I choose ' + (computer) + ', you choose ' + (player) + ', ' + (result)})
-		const userId = interaction.user.tag 
-		const guildName = interaction.guild.name
-		const channelName = interaction.channel.name
-		const date = new Date
-		let hours = date.getHours();
-		let minutes = date.getMinutes();
-		hours = (hours < 10) ? "0" + hours : hours;
-		minutes = (minutes < 10) ? "0" + minutes : minutes;
-		console.log("[COMMAND_EXECUTED] " + `[${hours}:${minutes}] ` + userId + " ran " + commandName + " in #" + channelName + " in " + guildName + ` [${player} ${computer} ${result}]`)
+				await interaction.reply({content: `I choose ${computer} you choose ${player}, ${result}`})
+				logging(commandName, interaction, result)
 	}
 }

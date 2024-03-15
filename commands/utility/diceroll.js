@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
+const logging = require('../../events/logging.js')
 const DiePath = 'images/Die';
 const commandName = "/roll"
 
@@ -19,14 +20,6 @@ module.exports = {
 		catch {
 			console.log(`There was an error running the ${commandName} command!`)
 		}
-		const userId = interaction.user.tag 
-		const guildName = interaction.guild.name
-		const channelName = interaction.channel.name
-		const date = new Date
-		let hours = date.getHours();
-		let minutes = date.getMinutes();
-		hours = (hours < 10) ? "0" + hours : hours;
-		minutes = (minutes < 10) ? "0" + minutes : minutes;
-		console.log("[COMMAND_EXECUTED] " + `[${hours}:${minutes}] ` + userId + " ran " + commandName + " in #" + channelName + " in " + guildName + ` [${randomIndex +1}]`)
+		logging(commandName, interaction, filePath)
     }
 }
