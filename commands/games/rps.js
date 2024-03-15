@@ -3,9 +3,6 @@ const data = new SlashCommandBuilder
 const ComputerChoices = ['Rock', 'Paper', 'Scissors']
 const commandName = "/rps"
 
-function Logic(player, computer) {
-}
-
 module.exports = {
 	data: new SlashCommandBuilder()
 	.setName('rps')
@@ -48,11 +45,15 @@ module.exports = {
 						result = "You Win!"
 					}	
 				}
-				await interaction.reply({
-			content: 'I choose ' + (computer) + ', you choose ' + (player) + ', ' + (result),
-		})
+				await interaction.reply({content: 'I choose ' + (computer) + ', you choose ' + (player) + ', ' + (result)})
 		const userId = interaction.user.tag 
 		const guildName = interaction.guild.name
-		console.log("[COMMAND_EXECUTED] " + userId + " ran " + commandName + " in " + guildName + `[VALUE] ${computer} ${player} ${result}`)
+		const channelName = interaction.channel.name
+		const date = new Date
+		let hours = date.getHours();
+		let minutes = date.getMinutes();
+		hours = (hours < 10) ? "0" + hours : hours;
+		minutes = (minutes < 10) ? "0" + minutes : minutes;
+		console.log("[COMMAND_EXECUTED] " + `[${hours}:${minutes}] ` + userId + " ran " + commandName + " in #" + channelName + " in " + guildName + ` [${player} ${computer} ${result}]`)
 	}
 }

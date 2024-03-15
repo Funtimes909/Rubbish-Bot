@@ -14,6 +14,7 @@ module.exports = {
     async execute(interaction) {
         const gay = Math.trunc(Math.random() * 100)
         const user = ("<@" + interaction.options.getUser('user') + ">")
+        try {
         if (gay == 0) {
             await interaction.reply({content: user + " is " + gay + "% Gay! Hetreosexual spotted, proceeding to ban..."})
         }
@@ -29,8 +30,17 @@ module.exports = {
         else {
             await interaction.reply({content: user + " is " + gay + "% Gay!"})
         }
-        const userId = interaction.user.tag 
+    } catch {
+        console.log(`There was an error running the ${commandName} command!`)
+    }
+		const userId = interaction.user.tag 
 		const guildName = interaction.guild.name
-		console.log("[COMMAND_EXECUTED] " + userId + " ran " + commandName + " in " + guildName + `[VALUE] ${gay}`)
+		const channelName = interaction.channel.name
+		const date = new Date
+		let hours = date.getHours();
+		let minutes = date.getMinutes();
+		hours = (hours < 10) ? "0" + hours : hours;
+		minutes = (minutes < 10) ? "0" + minutes : minutes;
+		console.log("[COMMAND_EXECUTED] " + `[${hours}:${minutes}] ` + userId + " ran " + commandName + " in #" + channelName + " in " + guildName + ` [${gay}]`)
     }
 }

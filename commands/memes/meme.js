@@ -24,6 +24,12 @@ module.exports = {
         }
 		const userId = interaction.user.tag 
 		const guildName = interaction.guild.name
-		console.log("[COMMAND_EXECUTED] " + userId + " ran " + commandName + " in " + guildName + `[VALUE] ${filePath}`)
+		const channelName = interaction.channel.name
+		const date = new Date
+		let hours = date.getHours();
+		let minutes = date.getMinutes();
+		hours = (hours < 10) ? "0" + hours : hours;
+		minutes = (minutes < 10) ? "0" + minutes : minutes;
+		console.log("[COMMAND_EXECUTED] " + `[${hours}:${minutes}] ` + userId + " ran " + commandName + " in #" + channelName + " in " + guildName + ` [${filePath}]`)
     },
 }
