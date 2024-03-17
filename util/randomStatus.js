@@ -28,7 +28,15 @@ const activities = {
         "Vencord #support channel",
         "Richard Stallman",
         "Techbros",
-        "Hello Street Cat"
+        "Hello Street Cat",
+        "19 hour git tutorial",
+        "19 dollar fortnite card",
+        "plasma-discover crashing",
+        "https://discord.gg/WEErxAP8kz",
+        "macOS users install Xcode",
+        "Mojang employees doing absolutely nothing", // unfortunately real
+        "https://funtimes909.xyz",
+        "Someone not changing their password after getting hacked"
     ],
     Playing: [
         "Minecraft",
@@ -74,7 +82,11 @@ const activities = {
         "Dolphin",
         "SuperTuxKart",
         "Xorg",
-        "systemd"
+        "systemd",
+        "Rubbish-Bot",
+        "GitHub",
+        "Arch Linux",
+        "with Konqi",
     ],
     Listening: [
         "Arcade Fire",
@@ -99,7 +111,17 @@ const activities = {
         "screams from the walls",
         "catgirls meowing",
         "Sorting Algorithms",
-        "Trap Nation"
+        "Trap Nation",
+        "Spotify",
+        "30 Dollar Website",
+        "12 year old CoD players",
+        "Weezer", // Weez nuts
+        "Weez Nuts",,
+        "Deez Nuts",
+        "9 + 10",
+        "Gianni Matragrano",
+        "Minecraft Villagers",
+        "Scary Monsters and Nice Sprites MIDI"
     ]
 }
 
@@ -120,7 +142,7 @@ const statuses = ['online', 'idle', 'dnd'];
 
 module.exports.statuses = statuses;
 
-module.exports.ChangeStatus = function ChangeStatus(client) {
+module.exports.changeStatus = function changeStatus(client) {
     if (!client.isReady()) return;
     const keys = Object.keys(activities)
     const type = keys[(Math.floor(Math.random() * keys.length))]
