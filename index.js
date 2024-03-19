@@ -4,12 +4,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
-const buttonCommandPath = path.join(__dirname, 'buttonCommands');
-const buttonCommands = fs.readdirSync(buttonCommands);
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 const client = new Client({ intents: [GatewayIntentBits.Guilds],  });
-const { changeStatus } = require("./util/randomStatus")
+const changeStatus = require('./util/randomStatus.js')
 
 setInterval(changeStatus, 300000, client);
 
@@ -17,7 +15,7 @@ setInterval(changeStatus, 300000, client);
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.on(Events.ClientReady, readyClient => {
-	changeStatus(readyClient);
+	changeStatus(readyClient)
 });
 
 // Log in to Discord with your client's token
@@ -30,27 +28,11 @@ for (const folder of commandFolders) {
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
-		command.name = file.substring(0, command.name.length - 3);
-		// Set a new item in the Collection with the key as the command name and the value as the exported module
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
 		} else {
 			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
-	}
-}
-
-client.buttonCommands = new Collection();
-
-for (const buttonCommand of buttonCommands) {
-	const filePath = path.join(buttonCommandPath, buttonCommand);
-	const command = require(filePath);
-	command.name = file.substring(0, command.name.length - 3);
-	// Set a new item in the Collection with the key as the command name and the value as the exported module
-	if ('execute' in command) {
-		client.commands.set(command.name, command);
-	} else {
-		console.log(`[WARNING] The button command at ${filePath} is missing a required "execute" property.`);
 	}
 }
 

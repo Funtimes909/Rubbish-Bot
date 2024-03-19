@@ -142,8 +142,7 @@ const statuses = ['online', 'idle', 'dnd'];
 
 module.exports.statuses = statuses;
 
-module.exports.changeStatus = function changeStatus(client) {
-    if (!client.isReady()) return;
+module.exports = function changeStatus(client) {
     const keys = Object.keys(activities)
     const type = keys[(Math.floor(Math.random() * keys.length))]
     const items = activities[type]

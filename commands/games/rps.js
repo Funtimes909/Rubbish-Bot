@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const data = new SlashCommandBuilder
-const logging = require('../../events/logging.js')
+const { log, error } = require('../../events/log.js');
+const { randomFile } = require('../../util/randomFile.js');
 const ComputerChoices = ['Rock', 'Paper', 'Scissors']
 const commandName = "/rps"
 
@@ -22,6 +23,7 @@ module.exports = {
 				const player = interaction.options.getString('choice')
 				const computer = ComputerChoices[Math.floor(Math.random() * ComputerChoices.length)];
 				let result;
+				try {
 				if (player === computer) {
 					result = 'Tie!'
 				}
@@ -44,9 +46,13 @@ module.exports = {
 						result = "You Lose!"
 					} else {
 						result = "You Win!"
-					}	
-				}
+					}
+				}	
 				await interaction.reply({content: `I choose ${computer} you choose ${player}, ${result}`})
-				logging(commandName, interaction, result)
+				}
+				catch (err) {
+					error(commandName, interaction, err)
+				}	
+				log(commandName, interaction, result)
+			}
 	}
-}

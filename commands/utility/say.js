@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const logging = require('../../events/logging.js')
+const { log, error } = require('../../events/log.js')
 const commandName = "/say"
 
 module.exports = {
@@ -20,9 +20,9 @@ module.exports = {
 		else {
 		await interaction.reply(text)
 		}
-		} catch (e) {
-			console.log(`[COMMAND_ERROR] There was an error running the ${commandName} command!`)
+		} catch (err) {
+			error(commandName, interaction, err)
 		}
-		logging(commandName, interaction, text)
+		log(commandName, interaction, text)
 	}
 }
