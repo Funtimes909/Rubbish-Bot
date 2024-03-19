@@ -13,7 +13,7 @@ module.exports = {
                 .setRequired(true)),
 
     async execute(interaction) {
-        const gay = Math.trunc(Math.random() * 100)
+        const gay = Math.trunc(Math.random() * 101)
         const user = ("<@" + interaction.options.getUser('user') + ">")
         try {
         if (gay == 0) {

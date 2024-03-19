@@ -1,5 +1,5 @@
 function log(commandName, interaction, text) {
-    const userId = interaction.user.tag + " <@" + interaction.user.id + ">"
+    const userId = interaction.user.tag
     const guildName = interaction?.guild?.name || "[DM]"
     const channelName = interaction?.channel?.name || "?"
     const date = new Date();
