@@ -36,7 +36,9 @@ const activities = {
         "macOS users install Xcode",
         "Mojang employees doing absolutely nothing", // unfortunately real
         "https://funtimes909.xyz",
-        "Someone not changing their password after getting hacked"
+        "Someone not changing their password after getting hacked",
+        "Odetaris spotify profile",
+        "videos of cats"
     ],
     Playing: [
         "Minecraft",
@@ -87,6 +89,11 @@ const activities = {
         "GitHub",
         "Arch Linux",
         "with Konqi",
+        "The Last of Us",
+        "The Last of US Part 2",
+        "4 thousand dollar rgb gaming computer",
+        "uncanny fungus",
+        "RGB Keyboards"
     ],
     Listening: [
         "Arcade Fire",
