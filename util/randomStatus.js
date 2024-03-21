@@ -38,7 +38,8 @@ const activities = {
         "https://funtimes909.xyz",
         "Someone not changing their password after getting hacked",
         "Odetaris spotify profile",
-        "videos of cats"
+        "videos of cats",
+        "Gay Porn"
     ],
     Playing: [
         "Minecraft",
@@ -155,7 +156,19 @@ module.exports = function changeStatus(client) {
     const items = activities[type]
     const currentStatus = items[(Math.floor(Math.random() * items.length))]
     client.user.setActivity(currentStatus, { type: activityTypeMap[type] });
+    client.user.setStatus(statuses[(Math.floor(Math.random() * statuses.length))]);
     console.log(`[BOT_STATUS] Bot status has been set to [${type}] [${currentStatus}]`)
-	client.user.setStatus(statuses[(Math.floor(Math.random() * statuses.length))]);
-    
+
+}
+
+module.exports = function overrideStatus(client, overriddenType, overriddenStatus) {
+    if (overriddenType == "Listening") {
+        client.user.setActivity(overriddenStatus, { type: ActivityType.Listening });
+    }
+    else if (overriddenType == "Watching") {
+        client.user.setActivity(overriddenStatus, { type: ActivityType.Watching });
+    }
+    else {
+        client.user.setActivity(overriddenStatus, { type: ActivityType.Playing });
+    }
 }
