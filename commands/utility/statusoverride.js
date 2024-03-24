@@ -29,10 +29,10 @@ module.exports = {
             } catch (err) {
                 error(commandName, interaction, err)
             }
-            log(commandName, interaction)
         }
         else {
             await interaction.reply("You do not have permission to run this command!")
         }
+        log(commandName, interaction, overriddenStatus)
     }
 }
