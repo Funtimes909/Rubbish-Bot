@@ -17,19 +17,19 @@ module.exports = {
         const user = ("<@" + interaction.options.getUser('user') + ">")
         try {
         if (gay == 0) {
-            await interaction.reply({content: user + " is " + gay + "% Gay! Heterosexual spotted, proceeding to ban..."})
+            await interaction.reply({ content: `${user} is ${gay}% gay! Heterosexual detected, proceeding to ban` })
         }
         else if (gay == 100) {
-            await interaction.reply({content: user + " is " + gay + "% Gay! You are extremely gay, You are literally a total gayass"})
+            await interaction.reply({ content: `${user} is ${gay} % gay! You are extremely gay, You are literally a total gayass` })
         }
         else if (gay == 50) {
-            await interaction.reply({content: user + " is " + gay + "% Gay! You aren't gay? You're bisexual!"})
+            await interaction.reply({ content: `${user} is ${gay} % gay! You aren't gay? You're bisexual` })
         }
         else if (gay == 69) {
-            await interaction.reply({content: user + " is " + gay + "% Gay! You want GAY SEX???"})
+            await interaction.reply({ content: `${user} is ${gay} % gay! YOU WANT GAY SEX?` })
         }
         else {
-            await interaction.reply({content: user + " is " + gay + "% Gay!"})
+            await interaction.reply({ content: `${user} is ${gay} % gay!` })
         }
     } catch (err) {
         error(commandName, interaction, err)
