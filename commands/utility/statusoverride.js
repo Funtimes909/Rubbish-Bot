@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { log, error } = require('../../events/log.js')
-const overrideStatus = require('../../util/randomStatus.js')
+const overrideStatus = require('../../util/overrideStatus.js')
 const commandName = "/override"
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
         .setDescription('Overrides the status with whatever you want')
         .addStringOption(option =>
             option.setName('type')
-                .setDescription('Type of status bot will listen to')
+                .setDescription('Type of status bot will be set to')
                 .setRequired(true)
                 .addChoices(
                     { name: 'Listening', value: 'Listening' },

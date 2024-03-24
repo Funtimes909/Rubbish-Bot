@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { log, error } = require('../../events/log.js')
 const changeStatus = require('../../util/randomStatus.js')
-const commandName = "/changestatus"
+const commandName = "/status"
 
 module.exports = {
     data: new SlashCommandBuilder()
