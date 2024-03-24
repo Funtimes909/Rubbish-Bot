@@ -158,6 +158,5 @@ module.exports = function changeStatus(client) {
     client.user.setActivity(currentStatus, { type: activityTypeMap[type] });
     console.log(`[BOT_STATUS] Bot status has been set to [${type}] [${currentStatus}]`)
     client.user.setStatus(statuses[(Math.floor(Math.random() * statuses.length))]);
-    setInterval(changeStatus, 300000, client);
 }
 
