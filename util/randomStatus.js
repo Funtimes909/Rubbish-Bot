@@ -39,7 +39,8 @@ const activities = {
         "Someone not changing their password after getting hacked",
         "Odetaris spotify profile",
         "videos of cats",
-        "Gay Porn"
+        "Gay Porn",
+        "Javascript vs Completely Sane developers"
     ],
     Playing: [
         "Minecraft",
@@ -91,10 +92,13 @@ const activities = {
         "Arch Linux",
         "with Konqi",
         "The Last of Us",
-        "The Last of US Part 2",
+        "The Last of Us Part 2",
         "4 thousand dollar rgb gaming computer",
         "uncanny fungus",
-        "RGB Keyboards"
+        "RGB Keyboards",
+        "Stardew Valley",
+        "1984",
+        "Yume Nikki"
     ],
     Listening: [
         "Arcade Fire",
@@ -129,7 +133,8 @@ const activities = {
         "9 + 10",
         "Gianni Matragrano",
         "Minecraft Villagers",
-        "Scary Monsters and Nice Sprites MIDI"
+        "Scary Monsters and Nice Sprites MIDI",
+        "La Chiave Del Mio Amor"
     ]
 }
 
