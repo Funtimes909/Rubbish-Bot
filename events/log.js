@@ -23,7 +23,7 @@ function error(commandName, interaction, err) {
     hours = (hours < 10) ? "0" + hours : hours;
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
-    console.log("[COMMAND_ERROR] " + `[${hours}:${minutes}:${seconds}] ` + userId + " tried to run " + commandName + " in #" + channelName + " in " + guildName + ` but an error occured! [${err.name} ${err.message}]`)
+    console.log(`[COMMAND_ERROR] [${hours}:${minutes}:${seconds}] ${userId} tried to run ${commandName} in #${channelName} but an error occured! [${err.name} ${err.message}]`)
 }
 
 module.exports = {

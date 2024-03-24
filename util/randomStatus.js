@@ -160,8 +160,15 @@ module.exports = function changeStatus(client) {
     const type = keys[(Math.floor(Math.random() * keys.length))]
     const items = activities[type]
     const currentStatus = items[(Math.floor(Math.random() * items.length))]
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
     client.user.setActivity(currentStatus, { type: activityTypeMap[type] });
-    console.log(`[BOT_STATUS] Bot status has been set to [${type}] [${currentStatus}]`)
+    console.log(`[BOT_STATUS] [${hours}:${minutes}:${seconds}] Bot status has been set to [${type}] [${currentStatus}]`)
     client.user.setStatus(statuses[(Math.floor(Math.random() * statuses.length))]);
 }
 
