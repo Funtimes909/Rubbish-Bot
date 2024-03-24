@@ -27,6 +27,7 @@ module.exports = {
 				if (text.includes(bannedWords)) {
 					await interaction.reply({ content: "Please do not try to ping users/roles!", ephemeral: true });
 				} else {
+					await interaction.reply({ content: "You have sent an anonymous message!", ephemeral: true })
 					await interaction.channel.send({ content: text });
 				}
 			} else {
