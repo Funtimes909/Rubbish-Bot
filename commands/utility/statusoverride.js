@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { log, error } = require('../../events/log.js')
+const { logger, error } = require('../../events/log.js')
 const overrideStatus = require('../../util/overrideStatus.js')
 const commandName = "/override"
 
@@ -33,6 +33,6 @@ module.exports = {
         else {
             await interaction.reply("You do not have permission to run this command!")
         }
-        log(commandName, interaction, overriddenStatus)
+        logger("status", commandName, interaction, overriddenStatus) // TODO: Fix this returning undefined to logger()
     }
 }

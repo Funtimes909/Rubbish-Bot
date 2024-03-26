@@ -1,4 +1,5 @@
 const { ActivityType } = require('discord.js');
+const { logStatus, logger } = require('../events/log.js')
 
 const activities = {
     Watching: [
@@ -157,18 +158,15 @@ module.exports.statuses = statuses;
 
 module.exports = function changeStatus(client) {
     const keys = Object.keys(activities)
-    const type = keys[(Math.floor(Math.random() * keys.length))]
+    const type = keys[(Math.trunc(Math.random() * keys.length))]
     const items = activities[type]
-    const currentStatus = items[(Math.floor(Math.random() * items.length))]
-    const date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    const currentStatus = items[(Math.trunc(Math.random() * items.length))]
     client.user.setActivity(currentStatus, { type: activityTypeMap[type] });
-    console.log(`[BOT_STATUS] [${hours}:${minutes}:${seconds}] Bot status has been set to [${type}] [${currentStatus}]`)
-    client.user.setStatus(statuses[(Math.floor(Math.random() * statuses.length))]);
+    client.user.setStatus(statuses[(Math.trunc(Math.random() * statuses.length))]);
+    activity = {
+        status: currentStatus,
+        type: type
+    }
+    logger("status", activity)
 }
 

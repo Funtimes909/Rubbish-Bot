@@ -1,7 +1,4 @@
-function log(commandName, interaction, text) {
-    const userId = interaction.user.tag
-    const guildName = interaction?.guild?.name || "[DM]"
-    const channelName = interaction?.channel?.name || "?"
+const getTime = function () {
     const date = new Date();
     let hours = date.getHours();
     let minutes = date.getMinutes();
@@ -9,24 +6,27 @@ function log(commandName, interaction, text) {
     hours = (hours < 10) ? "0" + hours : hours;
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
-    console.log("[COMMAND_EXECUTED] " + `[${hours}:${minutes}:${seconds}] ` + userId + " ran " + commandName + " in #" + channelName + " in " + guildName + (text ? ` [${text}]` : ""))
+    time = hours + ":" + minutes + ":" + seconds;
+    return time;
 }
 
-function error(commandName, interaction, err) {
-    const userId = interaction.user.tag
+const logger = function (type, commandName, interaction, err) {
+    const userName = interaction?.user?.tag || "Unknown User"
     const guildName = interaction?.guild?.name || "[DM]"
-    const channelName = interaction?.channel?.name || "?"
-    const date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-    console.log(`[COMMAND_ERROR] [${hours}:${minutes}:${seconds}] ${userId} tried to run ${commandName} in #${channelName} but an error occured! [${err.name} ${err.message}]`)
+    const channelName = interaction?.channel?.name || "Unknown Channel"
+    if (type == "status") {
+        console.log(`[BOT_STATUS] [${getTime()}] Bot status has been changed to [${activity.type}] [${activity.status}]`)
+    }
+    else if (type == "log") {
+        console.log(`[COMMAND_EXECUTED] [${getTime()}] ${userName} ran ${commandName} in #${channelName} in ${guildName}`)
+    }
+    else {
+        console.error(`[ERROR] [${getTime()}] ${userName} tried to run ${commandName} in #${channelName} in ${guildName} but an error occured! [${err.name}] [${err.message}]`)
+    }
 }
 
 module.exports = {
-    log,
-    error
+    getTime,
+    logger
 }
+

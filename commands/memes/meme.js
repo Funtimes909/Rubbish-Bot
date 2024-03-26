@@ -2,7 +2,7 @@ const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 const { randomFile } = require("../../util/randomFile");
-const { log, error } = require('../../events/log.js')
+const { logger, error } = require('../../events/log.js')
 const memeFolderPath = '/home/funtimes909/Documents/Memes/';
 const commandName = "/meme"
 
@@ -18,6 +18,6 @@ module.exports = {
 		} catch (err) {
 			error(commandName, interaction, err)
 		}
-		log(commandName, interaction, filePath)
+		logger("log", commandName, interaction, filePath)
 	},
 }
