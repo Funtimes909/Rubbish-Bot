@@ -2,7 +2,7 @@ const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 const { randomFile } = require("../../util/randomFile");
-const { log, error } = require('../../events/log.js')
+const { logger } = require('../../events/log.js')
 const OhioFolderPath = '/home/funtimes909/Documents/Memes/Memes Made in Ohio';
 const commandName = "/ohio"
 
@@ -16,8 +16,8 @@ module.exports = {
 			await interaction.deferReply();
 			await interaction.editReply({ files: [filePath] });
 		} catch (err) {
-			error(commandName, interaction, err)
+			logger(commandName, interaction, err)
 		}
-		log(commandName, interaction, filePath)
+		logger(commandName, interaction, filePath)
 	},
 }

@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const { log, error } = require('../../events/log.js')
+const { logger } = require('../../events/log.js')
 const DiePath = 'images/Die';
 const commandName = "/roll"
 
@@ -18,8 +18,8 @@ module.exports = {
 		await interaction.reply({ content: "The value is " + (randomIndex +1) + "!", files: [filePath] });
 		}
 		catch (err) {
-			error(commandName, interaction, err)
+			logger("error", commandName, interaction, err)
 		}
-		log(commandName, interaction, filePath)
+		logger("log", commandName, interaction, filePath)
     }
 }

@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { log, error } = require('../../events/log.js')
+const { logger } = require('../../events/log.js')
 const commandName = "/gay"
 
 module.exports = {
@@ -31,9 +31,10 @@ module.exports = {
         else {
             await interaction.reply({ content: `${user} is ${gay}% gay!` })
         }
-    } catch (err) {
-        error(commandName, interaction, err)
-    }
-        log(commandName, interaction, gay)
+        }
+        catch {
+            logger("error", commandName, interaction, gay)
+        }
+        logger("log", commandName, interaction, gay)
     }
 }

@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 const { randomFile } = require("../../util/randomFile");
-const { log, error } = require('../../events/log.js')
+const { logger } = require('../../events/log.js')
 const ChristmasFolderPath = '/home/funtimes909/Documents/Memes/Christmas Gifs';
 const commandName = "/jolly"
 
@@ -15,9 +15,9 @@ module.exports = {
 		try {
 			await interaction.deferReply();
 			await interaction.editReply({ files: [filePath] });
-		} catch (e) {
-			error(commandName, interaction)
+		} catch (err) {
+			logger("error", commandName, interaction, err)
 		}
-		log(commandName, interaction, filePath)
+		logger("log", commandName, interaction, filePath)
 	},
 }

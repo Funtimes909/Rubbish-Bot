@@ -1,4 +1,4 @@
-const { Client, SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const commandName = "/help"
 
 function getRandomColor() {
@@ -54,6 +54,12 @@ module.exports = {
                 { name: '/roll', value: 'Starts a quick game of rock paper scissors', inline: true })
             .addFields(
                 { name: '/override', value: 'Overrides the bots current status with whatever you want (only avaliable to the owner of the bot)', inline: true })
-        await interaction.reply({ content: "Thanks for checking out Rubbish Bot! Heres a list of commands to help you get started!", embeds: [helpCommand, helpCommandContinued] })
+                try {
+                    await interaction.reply({ content: "Thanks for checking out Rubbish Bot! Heres a list of commands to help you get started!", embeds: [helpCommand, helpCommandContinued] })
+                }
+                catch (err) {
+                    logger("error", commandName, interaction, )
+                }
+                logger("log", commandName, interaction)
     }
 }

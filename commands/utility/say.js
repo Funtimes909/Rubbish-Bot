@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const { log, error } = require('../../events/log.js');
+const { logger } = require('../../events/log.js');
 const commandName = "/say";
 
 module.exports = {
@@ -38,8 +38,8 @@ module.exports = {
 				}
 			}
 		} catch (err) {
-			error(commandName, interaction, err);
+			logger("error", commandName, interaction, err);
 		}
-		log(commandName, interaction, text);
+		logger("log", commandName, interaction, text);
 	}
 };

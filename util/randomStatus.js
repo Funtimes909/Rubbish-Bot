@@ -1,5 +1,5 @@
 const { ActivityType } = require('discord.js');
-const { logStatus, logger } = require('../events/log.js')
+const { logger } = require('../events/log.js')
 
 const activities = {
     Watching: [
@@ -41,7 +41,8 @@ const activities = {
         "Odetaris spotify profile",
         "videos of cats",
         "Gay Porn",
-        "Javascript vs Completely Sane developers"
+        "Javascript vs Completely Sane developers",
+        "The Last of Us Behind The Scenes"
     ],
     Playing: [
         "Minecraft",

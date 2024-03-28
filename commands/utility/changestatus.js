@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { log, error } = require('../../events/log.js')
+const { logger } = require('../../events/log.js')
 const changeStatus = require('../../util/randomStatus.js')
 const commandName = "/status"
 
@@ -12,8 +12,8 @@ module.exports = {
         try {
             await interaction.reply({ content: "Updated status" });
         } catch (err) {
-            error(commandName, interaction, err)
+            logger("error", commandName, interaction, err)
         }
-        log(commandName, interaction)
+        logger("log", commandName, interaction)
     }
 }
