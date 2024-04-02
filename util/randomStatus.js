@@ -43,7 +43,8 @@ const activities = {
         "Gay Porn",
         "Javascript vs Completely Sane developers",
         "The Last of Us Behind The Scenes",
-        "mewing tutorial 10 hours"
+        "mewing tutorial 10 hours",
+        "construction"
     ],
     Playing: [
         "Minecraft",
@@ -101,7 +102,9 @@ const activities = {
         "RGB Keyboards",
         "Stardew Valley",
         "1984",
-        "Yume Nikki"
+        "Yume Nikki",
+        "with Your Mom",
+        "Flappy bird on Samsung Smart Fridge"
     ],
     Listening: [
         "Arcade Fire",
