@@ -42,7 +42,8 @@ const activities = {
         "videos of cats",
         "Gay Porn",
         "Javascript vs Completely Sane developers",
-        "The Last of Us Behind The Scenes"
+        "The Last of Us Behind The Scenes",
+        "mewing tutorial 10 hours"
     ],
     Playing: [
         "Minecraft",
