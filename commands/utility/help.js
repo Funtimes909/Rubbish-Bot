@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { logger } = require('../../events/log.js');
 const commandName = "/help"
 
 function getRandomColor() {

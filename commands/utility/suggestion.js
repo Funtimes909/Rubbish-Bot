@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require('discord.js')
 const MongoClient = require('mongodb').MongoClient
 const uri = "mongodb://192.168.1.210:27017/";
 const client = new MongoClient(uri);
-const commandName = '/suggest'
 const { logger } = require('../../events/log.js')
 
 module.exports = {
@@ -32,7 +31,7 @@ module.exports = {
             const suggestions = db.collection('suggestions')
             const result = await suggestions.insertOne(document)
         }
-        logger('log', commandName, interaction, suggestion)
         insert()
+        logger('log', interaction, suggestion)
     }
 }

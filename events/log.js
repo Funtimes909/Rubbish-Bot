@@ -10,10 +10,11 @@ const getTime = function () {
     return time;
 }
 
-const logger = function (type, commandName, interaction, filePath, err) {
+const logger = function (type, interaction, filePath, err) {
     const userName = interaction?.user?.tag || "Unknown User"
     const guildName = interaction?.guild?.name || "[DM]"
     const channelName = interaction?.channel?.name || "Unknown Channel"
+    const commandName = interaction?.commandName
     if (type == "status") {
         console.log(`[BOT_STATUS] [${getTime()}] Bot status has been changed to [${activity.type}] [${activity.status}]`)
     }
